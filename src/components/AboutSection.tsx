@@ -14,7 +14,7 @@ const AboutSection = () => {
           >
             <img
               src={therapistImage}
-              alt="Dr. Sarah Mitchell, Licensed Clinical Therapist"
+              alt="Britney Worley, Counselor"
               className="rounded-2xl shadow-xl w-full max-w-md mx-auto object-cover aspect-[3/4]"
             />
           </motion.div>
@@ -29,38 +29,28 @@ const AboutSection = () => {
               About Me
             </p>
             <h2 className="text-3xl md:text-4xl font-display font-medium mb-6 leading-snug">
-              Hi, I'm Dr. Sarah Mitchell
+              Hi, I'm Britney
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                With over 15 years of clinical experience, I specialize in helping
-                adults navigate the complexities of modern life — from anxiety and
-                depression to relationship challenges and major life transitions.
+                Many clients come to counseling looking for support with repeated
+                struggles in their lives or in the ways they relate to themselves and
+                others. I help people understand these patterns, navigate life&apos;s
+                challenges, and create meaningful change that strengthens connection and
+                fosters personal growth.
               </p>
               <p>
-                My approach is warm, collaborative, and grounded in evidence-based
-                methods including CBT, EMDR, and mindfulness-based therapies. I believe
-                every person has the capacity for meaningful change, and my role is to
-                walk alongside you on that journey.
+                I strive to create a warm, authentic space rather than a stiff,
+                overly-clinical experience. I&apos;m direct and offer practical feedback
+                with warmth and validation, so sessions feel conversational, grounded,
+                and collaborative.
               </p>
               <p>
-                I hold a Doctorate in Clinical Psychology from Columbia University and
-                am licensed in New York and California.
+                My work is integrative and relational. I draw from relational-cultural
+                and systems perspectives, as well as techniques from Motivational
+                Interviewing, CBT, DBT, and solution-focused therapies to support both
+                insight and practical skills.
               </p>
-            </div>
-            <div className="mt-8 flex gap-8">
-              <div>
-                <p className="text-3xl font-display font-semibold text-primary">15+</p>
-                <p className="text-sm text-muted-foreground">Years Experience</p>
-              </div>
-              <div>
-                <p className="text-3xl font-display font-semibold text-primary">1,200+</p>
-                <p className="text-sm text-muted-foreground">Clients Helped</p>
-              </div>
-              <div>
-                <p className="text-3xl font-display font-semibold text-primary">98%</p>
-                <p className="text-sm text-muted-foreground">Client Satisfaction</p>
-              </div>
             </div>
           </motion.div>
         </div>

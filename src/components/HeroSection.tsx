@@ -27,7 +27,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6 }}
             className="text-body text-sm uppercase tracking-[0.2em] text-cream/80 mb-4"
           >
-            Licensed Clinical Therapist
+            Trauma & relational therapist in Colorado
           </motion.p>
 
           <motion.h1
@@ -36,9 +36,8 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-cream leading-tight mb-6"
           >
-            A safe space to{" "}
-            <span className="italic">heal, grow,</span>{" "}
-            and thrive.
+            Ready to feel better?{" "}
+            <span className="italic">Let&apos;s start today.</span>
           </motion.h1>
 
           <motion.p
@@ -47,8 +46,10 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg text-cream/85 mb-10 max-w-lg leading-relaxed"
           >
-            Compassionate, evidence-based therapy for individuals navigating anxiety,
-            depression, life transitions, and more. You don't have to do this alone.
+            I&apos;m Britney, a trauma and relational therapist serving clients across
+            Colorado. I help people understand stuck patterns, navigate life&apos;s
+            challenges, and create meaningful change that strengthens connection and
+            supports personal growth.
           </motion.p>
 
           <motion.div

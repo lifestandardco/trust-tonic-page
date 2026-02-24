@@ -4,13 +4,13 @@ import { Star } from "lucide-react";
 const testimonials = [
   {
     quote:
-      "Dr. Mitchell helped me find my way back to myself. After years of struggling with anxiety, I finally feel like I can breathe again.",
+      "Britney helped me find my way back to myself. After years of struggling with anxiety, I finally feel like I can breathe again.",
     name: "Emily R.",
     detail: "Client for 2 years",
   },
   {
     quote:
-      "I was hesitant to start therapy, but Sarah made me feel safe from the very first session. She's changed my life in ways I didn't think possible.",
+      "I was hesitant to start therapy, but Britney made me feel safe from the very first session. She's changed my life in ways I didn't think possible.",
     name: "Michael T.",
     detail: "Client for 1 year",
   },

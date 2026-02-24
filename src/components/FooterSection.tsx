@@ -5,12 +5,12 @@ const FooterSection = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
             <p className="font-display text-lg font-semibold text-primary-foreground">
-              Dr. Sarah Mitchell
+              Britney Worley Counseling
             </p>
-            <p className="text-sm mt-1">Licensed Clinical Psychologist — NY & CA</p>
+            <p className="text-sm mt-1">Britney Worley</p>
           </div>
           <div className="text-sm text-center md:text-right">
-            <p>© {new Date().getFullYear()} Dr. Sarah Mitchell. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Britney Worley Counseling. All rights reserved.</p>
             <p className="mt-1">
               If you are in crisis, please call{" "}
               <a href="tel:988" className="underline text-primary-foreground">

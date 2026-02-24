@@ -38,12 +38,12 @@ const ContactSection = () => {
               Get in Touch
             </p>
             <h2 className="text-3xl md:text-4xl font-display font-medium mb-4">
-              Begin Your Journey
+              Schedule a Free Consultation
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-10">
-              Taking the first step can feel daunting — but you've already started by
-              being here. Reach out for a free 15-minute consultation, and let's
-              explore how we can work together.
+              Finding the right therapist can feel overwhelming. Reach out to schedule
+              a free 20-minute phone consultation so we can talk through your needs,
+              answer questions, and see if we&apos;re a good fit to work together.
             </p>
 
             <div className="space-y-6">
@@ -53,7 +53,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Phone</p>
-                  <p className="font-medium">(555) 123-4567</p>
+                  <p className="font-medium">(970) 818-0230</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -62,7 +62,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="font-medium">hello@drsarahmitchell.com</p>
+                  <p className="font-medium">britney@britneyworley.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -71,7 +71,9 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Office</p>
-                  <p className="font-medium">245 Park Avenue, New York, NY</p>
+                  <p className="font-medium">
+                    226 Remington Street, Unit 1, Fort Collins, CO 80524
+                  </p>
                 </div>
               </div>
             </div>

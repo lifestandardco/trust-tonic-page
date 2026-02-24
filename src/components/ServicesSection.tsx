@@ -1,30 +1,30 @@
 import { motion } from "framer-motion";
-import { Heart, Brain, Users, Sparkles } from "lucide-react";
+import { Heart, Users, Sparkles, Shield, Fingerprint } from "lucide-react";
 
 const services = [
   {
-    icon: Brain,
-    title: "Anxiety & Depression",
-    description:
-      "Evidence-based techniques to help you manage overwhelming thoughts and feelings, and rediscover joy in daily life.",
-  },
-  {
     icon: Heart,
-    title: "Relationship Counseling",
+    title: "Relationship & Emotional Well-being",
     description:
-      "Build healthier communication patterns, heal from past wounds, and create deeper connections with those who matter most.",
+      "Relationship challenges and recurring dynamics, healing from past traumatic experiences, boundaries, communication, anxiety, depression, and managing emotional reactivity.",
   },
   {
     icon: Sparkles,
-    title: "Trauma & EMDR",
+    title: "Life Transitions & Personal Growth",
     description:
-      "Safely process traumatic experiences using EMDR and other proven approaches to help you find relief and resilience.",
+      "Life and career transitions, college students and young adults navigating independence and self-discovery, and support for self-esteem and self-confidence.",
   },
   {
-    icon: Users,
-    title: "Life Transitions",
+    icon: Shield,
+    title: "Alcohol & Substance Use",
     description:
-      "Navigate career changes, loss, parenthood, or other pivotal moments with support, clarity, and confidence.",
+      "Exploring your relationship with alcohol or substances, clarifying whether current use fits your goals and values, and supporting harm reduction, reduced use, or sobriety.",
+  },
+  {
+    icon: Fingerprint,
+    title: "Identity & Marginalization",
+    description:
+      "Support for LGBTQIAA+ individuals and those navigating marginalization related to race, gender, sexuality, size, and ability in a safe, affirming space.",
   },
 ];
 
@@ -46,8 +46,8 @@ const ServicesSection = () => {
             Areas of Expertise
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Every person's journey is unique. I offer personalized support across a
-            range of specialties.
+            Many of these concerns are connected, and counseling can provide space to
+            explore how they show up in your life, relationships, and sense of self.
           </p>
         </motion.div>
 
