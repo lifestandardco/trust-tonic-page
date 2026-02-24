@@ -14,7 +14,7 @@ const AboutSection = () => {
           >
             <img
               src={therapistImage}
-              alt="Britney Worley, Counselor"
+              alt="Britney Worley, M.A., LPC, NCC"
               className="rounded-2xl shadow-xl w-full max-w-md mx-auto object-cover aspect-[3/4]"
             />
           </motion.div>
@@ -29,28 +29,32 @@ const AboutSection = () => {
               About Me
             </p>
             <h2 className="text-3xl md:text-4xl font-display font-medium mb-6 leading-snug">
-              Hi, I'm Britney
+              Hi, I'm Britney.
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Many clients come to counseling looking for support with repeated
-                struggles in their lives or in the ways they relate to themselves and
-                others. I help people understand these patterns, navigate life&apos;s
-                challenges, and create meaningful change that strengthens connection and
-                fosters personal growth.
+                I strive to create a warm, authentic space where you feel genuinely connected to the person you're sharing your deepest experiences with. I am direct and conversational, aiming for sessions to feel relaxed and not overly clinical.
               </p>
               <p>
-                I strive to create a warm, authentic space rather than a stiff,
-                overly-clinical experience. I&apos;m direct and offer practical feedback
-                with warmth and validation, so sessions feel conversational, grounded,
-                and collaborative.
+                As a queer woman of color and first-generation college student, I have a deep passion for working with people from diverse backgrounds, particularly those who have faced marginalization or trauma.
               </p>
               <p>
-                My work is integrative and relational. I draw from relational-cultural
-                and systems perspectives, as well as techniques from Motivational
-                Interviewing, CBT, DBT, and solution-focused therapies to support both
-                insight and practical skills.
+                My approach is integrative—drawing on techniques from CBT, DBT, and EMDR—but I always make sure we leave room for laughter and joy along the way.
               </p>
+            </div>
+            <div className="mt-8 flex gap-8">
+              <div>
+                <p className="text-2xl font-display font-semibold text-primary uppercase">LPC</p>
+                <p className="text-sm text-muted-foreground">Licensed Counselor</p>
+              </div>
+              <div>
+                <p className="text-2xl font-display font-semibold text-primary uppercase">8+</p>
+                <p className="text-sm text-muted-foreground">Years of Experience</p>
+              </div>
+              <div>
+                <p className="text-2xl font-display font-semibold text-primary uppercase">NCC</p>
+                <p className="text-sm text-muted-foreground">National Certified</p>
+              </div>
             </div>
           </motion.div>
         </div>

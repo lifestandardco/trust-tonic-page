@@ -1,30 +1,26 @@
 import { motion } from "framer-motion";
-import { Heart, Users, Sparkles, Shield, Fingerprint } from "lucide-react";
+import { Heart, Sparkles, Shield, Fingerprint } from "lucide-react";
 
 const services = [
   {
     icon: Heart,
     title: "Relationship & Emotional Well-being",
-    description:
-      "Relationship challenges and recurring dynamics, healing from past traumatic experiences, boundaries, communication, anxiety, depression, and managing emotional reactivity.",
+    description: "Navigate recurring dynamics, set healthy boundaries, and manage emotional reactivity to strengthen your connections.",
   },
   {
     icon: Sparkles,
     title: "Life Transitions & Personal Growth",
-    description:
-      "Life and career transitions, college students and young adults navigating independence and self-discovery, and support for self-esteem and self-confidence.",
+    description: "Specialized support for college students and young adults navigating independence, career changes, and self-discovery.",
   },
   {
     icon: Shield,
     title: "Alcohol & Substance Use",
-    description:
-      "Exploring your relationship with alcohol or substances, clarifying whether current use fits your goals and values, and supporting harm reduction, reduced use, or sobriety.",
+    description: "Explore your relationship with substances through a harm-reduction lens, aligning choices with your goals and values.",
   },
   {
     icon: Fingerprint,
     title: "Identity & Marginalization",
-    description:
-      "Support for LGBTQIAA+ individuals and those navigating marginalization related to race, gender, sexuality, size, and ability in a safe, affirming space.",
+    description: "A safe space to explore LGBTQIAA+ identities and the impacts of systemic oppression related to race, gender, and ability.",
   },
 ];
 
@@ -45,10 +41,6 @@ const ServicesSection = () => {
           <h2 className="text-3xl md:text-4xl font-display font-medium mb-4">
             Areas of Expertise
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Many of these concerns are connected, and counseling can provide space to
-            explore how they show up in your life, relationships, and sense of self.
-          </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">

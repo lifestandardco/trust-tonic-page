@@ -7,7 +7,7 @@ const FooterSection = () => {
             <p className="font-display text-lg font-semibold text-primary-foreground">
               Britney Worley Counseling
             </p>
-            <p className="text-sm mt-1">Britney Worley</p>
+            <p className="text-sm mt-1">M.A., LPC, NCC — Licensed in Colorado</p>
           </div>
           <div className="text-sm text-center md:text-right">
             <p>© {new Date().getFullYear()} Britney Worley Counseling. All rights reserved.</p>
