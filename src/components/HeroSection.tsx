@@ -15,7 +15,7 @@ const HeroSection = () => {
           alt="Warm, welcoming therapy office"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-foreground/40" />
+        <div className="absolute inset-0 bg-foreground/50" />
       </div>
 
       <div className="container relative z-10 mx-auto px-6 py-20">

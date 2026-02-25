@@ -59,7 +59,7 @@ const NavBar = () => {
             size="sm"
             onClick={() => handleClick("#contact")}
           >
-            Book Now
+            Schedule Now
           </Button>
         </div>
 
@@ -87,7 +87,7 @@ const NavBar = () => {
             onClick={() => handleClick("#contact")}
             className="w-full"
           >
-            Book Now
+            Schedule Now
           </Button>
         </div>
       )}

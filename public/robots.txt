@@ -12,3 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Help search engines find your pages faster
+Sitemap: https://www.britneyworleycounseling.com/sitemap.xml
