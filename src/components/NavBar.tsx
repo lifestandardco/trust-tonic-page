@@ -5,8 +5,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Expertise", href: "#services" }, // Renamed from "Services" to reflect the component content
-  { label: "Services & Rates", href: "/services" }, // Renamed from "Rates & Insurance"
+  { label: "Expertise", href: "#services" },
+  { label: "Services & Rates", href: "/services" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
@@ -21,13 +21,14 @@ const NavBar = () => {
     
     if (href.startsWith("#")) {
       if (location.pathname !== "/") {
-        // Navigate home then scroll if we are on the /services page
         navigate("/", { state: { scrollTo: href } });
       } else {
-        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       }
     } else {
-      // Navigate to the full /services page
       navigate(href);
       window.scrollTo(0, 0);
     }
@@ -36,11 +37,18 @@ const NavBar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Brand Link with Logo Icon */}
         <button 
           onClick={() => handleClick("#")} 
-          className="font-display text-xl font-semibold text-foreground hover:opacity-80 transition-opacity"
+          className="flex items-center gap-3 font-display text-xl font-semibold text-foreground hover:opacity-80 transition-opacity shrink-0"
         >
-          Britney Worley Counseling
+          <img 
+            src="/logo-icon.svg" 
+            alt="Britney Worley Counseling Logo" 
+            className="h-8 w-8 object-contain shrink-0" 
+          />
+          {/* Removed responsive hiding so the full name always displays */}
+          <span className="text-base sm:text-xl whitespace-nowrap">Britney Worley Counseling</span>
         </button>
 
         {/* Desktop Navigation */}
@@ -49,7 +57,7 @@ const NavBar = () => {
             <button
               key={link.label}
               onClick={() => handleClick(link.href)}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
             >
               {link.label}
             </button>
@@ -58,13 +66,14 @@ const NavBar = () => {
             variant="hero"
             size="sm"
             onClick={() => handleClick("#contact")}
+            className="whitespace-nowrap"
           >
             Schedule Now
           </Button>
         </div>
 
         {/* Mobile toggle */}
-        <button className="md:hidden" onClick={() => setOpen(!open)}>
+        <button className="md:hidden ml-4" onClick={() => setOpen(!open)}>
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
