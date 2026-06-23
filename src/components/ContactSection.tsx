@@ -165,7 +165,6 @@ const ContactSection = () => {
                     First Name <span className="text-primary">*</span>
                   </label>
                   <Input
-                    placeholder="First name"
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     required
@@ -177,7 +176,6 @@ const ContactSection = () => {
                     Last Name <span className="text-primary">*</span>
                   </label>
                   <Input
-                    placeholder="Last name"
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                     required
@@ -189,7 +187,6 @@ const ContactSection = () => {
                 <div>
                   <label className="text-sm font-medium mb-1.5 block">Pronouns</label>
                   <Input
-                    placeholder="e.g. she/her, they/them"
                     value={formData.pronouns}
                     onChange={(e) => setFormData({ ...formData, pronouns: e.target.value })}
                     className="bg-background"
@@ -199,7 +196,6 @@ const ContactSection = () => {
                   <label className="text-sm font-medium mb-1.5 block">Phone</label>
                   <Input
                     type="tel"
-                    placeholder="(555) 000-0000"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="bg-background"
@@ -212,7 +208,6 @@ const ContactSection = () => {
                 </label>
                 <Input
                   type="email"
-                  placeholder="you@email.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
@@ -222,7 +217,6 @@ const ContactSection = () => {
               <div>
                 <label className="text-sm font-medium mb-1.5 block">Insurance Provider</label>
                 <Input
-                  placeholder="e.g. Aetna, United, Optum"
                   value={formData.insurance}
                   onChange={(e) => setFormData({ ...formData, insurance: e.target.value })}
                   className="bg-background"
