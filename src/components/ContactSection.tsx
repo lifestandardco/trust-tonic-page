@@ -13,35 +13,73 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
+// Formspree form endpoint — public by design, safe to commit.
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xrewbgkn";
+
+const voicemailLabels: Record<string, string> = {
+  yes: "Yes",
+  no: "No",
+  "email-preferred": "Email preferred",
+};
+
+const emptyForm = {
+  firstName: "",
+  lastName: "",
+  pronouns: "",
+  phone: "",
+  email: "",
+  insurance: "",
+  voicemail: "",
+  message: "",
+};
+
 const ContactSection = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    pronouns: "",
-    phone: "",
-    email: "",
-    insurance: "",
-    voicemail: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState(emptyForm);
+  const [honeypot, setHoneypot] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. I'll get back to you within 24 hours.",
-    });
-    setFormData({
-      firstName: "",
-      lastName: "",
-      pronouns: "",
-      phone: "",
-      email: "",
-      insurance: "",
-      voicemail: "",
-      message: "",
-    });
+    setIsSubmitting(true);
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          "First name": formData.firstName,
+          "Last name": formData.lastName,
+          Pronouns: formData.pronouns,
+          Phone: formData.phone,
+          email: formData.email,
+          "Insurance provider": formData.insurance,
+          "May I leave a voicemail?": voicemailLabels[formData.voicemail] ?? "",
+          "What brings you here?": formData.message,
+          _subject: `New website inquiry from ${formData.firstName} ${formData.lastName}`,
+          _gotcha: honeypot,
+        }),
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. I'll get back to you within 24 hours.",
+      });
+      setFormData(emptyForm);
+    } catch {
+      toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description:
+          "Your message couldn't be sent. Please try again, or email britney@britneyworley.com directly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -221,8 +259,25 @@ const ContactSection = () => {
                   className="bg-background resize-none"
                 />
               </div>
-              <Button variant="hero" size="lg" type="submit" className="w-full py-6">
-                Send
+              {/* Honeypot field — hidden from real users, catches bots */}
+              <input
+                type="text"
+                name="_gotcha"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                className="hidden"
+              />
+              <Button
+                variant="hero"
+                size="lg"
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-6"
+              >
+                {isSubmitting ? "Sending..." : "Send"}
               </Button>
               <p className="text-xs text-muted-foreground text-center">
                 Your information is completely confidential.
