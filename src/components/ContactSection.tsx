@@ -38,9 +38,14 @@ const ContactSection = () => {
   const [formData, setFormData] = useState(emptyForm);
   const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [voicemailError, setVoicemailError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.voicemail) {
+      setVoicemailError(true);
+      return;
+    }
     setIsSubmitting(true);
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
@@ -224,13 +229,21 @@ const ContactSection = () => {
               </div>
               <div>
                 <label className="text-sm font-medium mb-1.5 block">
-                  May I leave a voicemail?
+                  May I leave a voicemail? <span className="text-primary">*</span>
                 </label>
                 <Select
+                  required
+                  name="voicemail"
                   value={formData.voicemail}
-                  onValueChange={(value) => setFormData({ ...formData, voicemail: value })}
+                  onValueChange={(value) => {
+                    setFormData({ ...formData, voicemail: value });
+                    setVoicemailError(false);
+                  }}
                 >
-                  <SelectTrigger className="bg-background">
+                  <SelectTrigger
+                    aria-invalid={voicemailError}
+                    className="bg-background aria-[invalid=true]:border-destructive"
+                  >
                     <SelectValue placeholder="Select an option" />
                   </SelectTrigger>
                   <SelectContent>
@@ -239,6 +252,11 @@ const ContactSection = () => {
                     <SelectItem value="email-preferred">Email preferred</SelectItem>
                   </SelectContent>
                 </Select>
+                {voicemailError && (
+                  <p className="text-sm text-destructive mt-1.5">
+                    Please select an option.
+                  </p>
+                )}
               </div>
               <div>
                 <label className="text-sm font-medium mb-1.5 block">
