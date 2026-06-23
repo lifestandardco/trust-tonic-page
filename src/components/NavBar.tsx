@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -13,8 +14,17 @@ const navLinks = [
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleClick = (href: string) => {
     setOpen(false);
@@ -35,20 +45,29 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-      <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Brand Link with Logo Icon */}
+    <nav 
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
+        scrolled 
+          ? "bg-background/95 backdrop-blur-md h-16 border-border/50 shadow-sm" 
+          : "bg-background/60 backdrop-blur-sm h-28 border-transparent"
+      )}
+    >
+      <div className="container mx-auto px-6 h-full flex items-center justify-between">
+        {/* Brand Button with maximized logo space */}
         <button 
           onClick={() => handleClick("#")} 
-          className="flex items-center gap-3 font-display text-xl font-semibold text-foreground hover:opacity-80 transition-opacity shrink-0"
+          className="hover:opacity-80 transition-all duration-300 shrink-0 flex items-center h-full py-2"
         >
           <img 
-            src="/logo-icon.svg" 
-            alt="Britney Worley Counseling Logo" 
-            className="h-8 w-8 object-contain shrink-0" 
+            src="/full-logo.png" 
+            alt="Britney Worley Counseling" 
+            className={cn(
+              "w-auto object-contain transition-all duration-300 max-w-[280px] md:max-w-none",
+              // Adjusted height to use almost the entire header height
+              scrolled ? "h-12 md:h-14" : "h-20 md:h-24"
+            )} 
           />
-          {/* Removed responsive hiding so the full name always displays */}
-          <span className="text-base sm:text-xl whitespace-nowrap">Britney Worley Counseling</span>
         </button>
 
         {/* Desktop Navigation */}
@@ -57,7 +76,7 @@ const NavBar = () => {
             <button
               key={link.label}
               onClick={() => handleClick(link.href)}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
             >
               {link.label}
             </button>
@@ -66,7 +85,7 @@ const NavBar = () => {
             variant="hero"
             size="sm"
             onClick={() => handleClick("#contact")}
-            className="whitespace-nowrap"
+            className="whitespace-nowrap shadow-md"
           >
             Schedule Now
           </Button>
@@ -80,12 +99,12 @@ const NavBar = () => {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-background border-b border-border px-6 pb-6 space-y-4">
+        <div className="md:hidden bg-background border-b border-border px-6 pb-6 space-y-4 shadow-xl">
           {navLinks.map((link) => (
             <button
               key={link.label}
               onClick={() => handleClick(link.href)}
-              className="block text-sm text-muted-foreground hover:text-foreground transition-colors w-full text-left"
+              className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left py-2"
             >
               {link.label}
             </button>

@@ -1,3 +1,4 @@
+// src/components/HeroSection.tsx
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-therapy.webp";
@@ -15,10 +16,11 @@ const HeroSection = () => {
           alt="Warm, welcoming therapy office"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-foreground/50" />
+        <div className="absolute inset-0 bg-foreground/40" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 py-20">
+      {/* Adjusted padding-top (pt) to account for the larger header */}
+      <div className="container relative z-10 mx-auto px-6 pt-32 pb-20 md:pt-48">
         <div className="max-w-2xl">
           <motion.p
             initial={{ opacity: 0, y: 20 }}

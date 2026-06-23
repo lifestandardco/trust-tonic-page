@@ -4,21 +4,18 @@ import { Star } from "lucide-react";
 const testimonials = [
   {
     quote:
-      "Britney helped me find my way back to myself. After years of struggling with anxiety, I finally feel like I can breathe again.",
-    name: "Emily R.",
-    detail: "Client for 2 years",
+      "After working alongside Britney for several years I can confidently say she is one of the most skilled and talented clinicians I have ever worked with. She is funny, kind and knowledgeable. Her clients are lucky to have her as their counselor.",
+    name: "Jessie Charbonneau, LPC, LAC",
   },
   {
     quote:
-      "I was hesitant to start therapy, but Britney made me feel safe from the very first session. She's changed my life in ways I didn't think possible.",
-    name: "Michael T.",
-    detail: "Client for 1 year",
+      "I worked alongside Britney for years and she is incredibly kind, warm, and funny. She is a skilled clinician who provides compassion and support with just the right blend of humor. Highly recommend if you need skillful support in growing toward your goals!",
+    name: "Dr. Jeff Paulez, PhD",
   },
   {
     quote:
-      "Her warmth and expertise are unmatched. I've recommended her to friends and family — she truly listens and cares.",
-    name: "Jessica L.",
-    detail: "Client for 3 years",
+      "Britney is a compassionate, knowledgeable and helpful therapist. She is able to connect through kindness and a sense of humor to form meaningful relationships with her clients. I recommend her for anyone who is ready to create change in a safe environment!",
+    name: "Jesselyn DeFilippo, LPC",
   },
 ];
 
@@ -37,7 +34,7 @@ const TestimonialsSection = () => {
             Kind Words
           </p>
           <h2 className="text-3xl md:text-4xl font-display font-medium">
-            What My Clients Say
+            What My Colleagues Say
           </h2>
         </motion.div>
 
@@ -61,7 +58,6 @@ const TestimonialsSection = () => {
               </p>
               <div>
                 <p className="font-display font-semibold text-sm">{t.name}</p>
-                <p className="text-xs text-muted-foreground">{t.detail}</p>
               </div>
             </motion.div>
           ))}

@@ -33,27 +33,27 @@ const AboutSection = () => {
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                I strive to create a warm, authentic space where you feel genuinely connected to the person you're sharing your deepest experiences with. I am direct and conversational, aiming for sessions to feel relaxed and not overly clinical.
+              I strive to create a warm, authentic space where you feel genuinely connected to the person you're sharing your deepest experiences with. I am direct and conversational, aiming for sessions to feel relaxed and not overly clinical. While we’ll work through the difficult parts of life, I also leave room for laughter and joy.
               </p>
               <p>
-                As a queer woman of color and first-generation college student, I have a deep passion for working with people from diverse backgrounds, particularly those who have faced marginalization or trauma.
+              As a queer woman of color and first-generation college student, I have a deep passion for working with people from diverse backgrounds, particularly those who have faced marginalization or trauma.
               </p>
               <p>
-                My approach is integrative—drawing on techniques from CBT, DBT, and EMDR—but I always make sure we leave room for laughter and joy along the way.
+              My approach is integrative—Everyone has their own story, and I believe care should reflect that. I often work from a relational-cultural and systems perspective because connection is the foundation of healing. Additionally, I draw on techniques from Motivational Interviewing, CBT, DBT, and Solution-Focused therapies in order to gain practical skills.
               </p>
             </div>
             <div className="mt-8 flex gap-8">
               <div>
                 <p className="text-2xl font-display font-semibold text-primary uppercase">LPC</p>
-                <p className="text-sm text-muted-foreground">Licensed Counselor</p>
+                <p className="text-sm text-muted-foreground">Licensed Professional Counselor</p>
               </div>
               <div>
                 <p className="text-2xl font-display font-semibold text-primary uppercase">8+</p>
                 <p className="text-sm text-muted-foreground">Years of Experience</p>
               </div>
               <div>
-                <p className="text-2xl font-display font-semibold text-primary uppercase">NCC</p>
-                <p className="text-sm text-muted-foreground">National Certified</p>
+                <p className="text-2xl font-display font-semibold text-primary uppercase">M.A.</p>
+                <p className="text-sm text-muted-foreground">Clinical Mental Health Counseling</p>
               </div>
             </div>
           </motion.div>
