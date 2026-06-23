@@ -1,13 +1,17 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import NavBar from "@/components/NavBar";
 import FooterSection from "@/components/FooterSection";
 import { Button } from "@/components/ui/button";
 import { Phone, Armchair, Users, ShieldCheck, Receipt, Info } from "lucide-react";
 
 const Services = () => {
+  const navigate = useNavigate();
+
   const scrollToContact = () => {
-    // This allows the "Book" button to navigate back home to the contact form
-    window.location.href = "/#contact";
+    // Navigate home and let Index.tsx smooth-scroll to the contact form
+    // once it has rendered (matches the NavBar pattern).
+    navigate("/", { state: { scrollTo: "#contact" } });
   };
 
   return (
