@@ -67,7 +67,7 @@ const ContactSection = () => {
 
       toast({
         title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you within 24 hours.",
+        description: "Thank you for your message. I look forward to connecting with you soon.",
       });
       setFormData(emptyForm);
     } catch {
@@ -279,9 +279,6 @@ const ContactSection = () => {
               >
                 {isSubmitting ? "Sending..." : "Send"}
               </Button>
-              <p className="text-xs text-muted-foreground text-center">
-                Your information is completely confidential.
-              </p>
             </form>
           </motion.div>
         </div>
