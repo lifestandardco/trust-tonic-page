@@ -6,13 +6,14 @@ import { cn } from "@/lib/utils";
 const services = [
   {
     icon: Heart,
-    title: "Relationship & Emotional Well-being",
+    title: "Trauma, Relationship & Emotional Well-being",
     description:
-      "Navigate patterns in relationships, set healthy boundaries, and manage emotional reactivity to support healthier connections.",
+      "Navigate patterns in relationships, strengthen boundaries, and process experiences of trauma and emotional reactivity for healthier connections.",
     details: [
-      "Anger outbursts and emotional reactivity that feels overwhelming",
+      "Past trauma showing up in current emotions and relationships",
+      "Angry outbursts and emotional reactivity that feels overwhelming",
       "Difficulty asserting needs or saying no",
-      "Stuck in repeating relationship cycles",
+      "Feeling stuck in repeated relationship cycles",
     ],
   },
   {
@@ -23,6 +24,7 @@ const services = [
     details: [
       "Feeling overwhelmed or experiencing self-doubt during life transitions",
       "Struggling with decision-making or adjusting to independence",
+      "Navigating college, grad school, early career stress, or career exploration",
       "Questioning your direction, identity, or next steps",
     ],
   },
@@ -83,7 +85,7 @@ const ServicesSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative min-h-[22rem] rounded-2xl bg-card shadow-sm transition-shadow duration-300 hover:shadow-md"
+                className="relative min-h-[25rem] rounded-2xl bg-card shadow-sm transition-shadow duration-300 hover:shadow-md"
               >
                 {/* Front face */}
                 <div className="flex h-full flex-col p-8">
@@ -123,7 +125,7 @@ const ServicesSection = () => {
                     isOpen && "opacity-100 translate-y-0 pointer-events-auto"
                   )}
                 >
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center gap-3 mb-3">
                     <div className="w-9 h-9 shrink-0 rounded-lg bg-primary/10 flex items-center justify-center">
                       <service.icon className="w-5 h-5 text-primary" />
                     </div>
@@ -139,10 +141,10 @@ const ServicesSection = () => {
                       <X className="w-4 h-4" aria-hidden="true" />
                     </button>
                   </div>
-                  <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3">
+                  <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">
                     Common experiences
                   </p>
-                  <ul className="space-y-2.5 text-sm text-foreground/80 leading-snug overflow-y-auto">
+                  <ul className="space-y-2 text-sm text-foreground/80 leading-snug overflow-y-auto">
                     {service.details.map((item) => (
                       <li key={item} className="flex gap-2.5">
                         <span
