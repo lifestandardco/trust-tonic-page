@@ -40,11 +40,26 @@ const ContactSection = () => {
             <h2 className="text-3xl md:text-4xl font-display font-medium mb-4">
               Schedule a Free Consultation
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-10">
+            <p className="text-muted-foreground leading-relaxed mb-6">
               Finding the right therapist can feel overwhelming. Reach out to schedule
               a free 20-minute phone consultation so we can talk through your needs,
               answer questions, and see if we&apos;re a good fit to work together.
             </p>
+
+            <p className="text-muted-foreground leading-relaxed mb-5">
+              Reach out to find a time to connect or schedule directly on my calendar
+              by following the link below and selecting &ldquo;I&apos;m a new client&rdquo;.
+            </p>
+
+            <Button variant="hero" size="lg" asChild className="mb-10">
+              <a
+                href="https://britneyworleycounseling.clientsecure.me"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Schedule on my calendar
+              </a>
+            </Button>
 
             <div className="space-y-6">
               <div className="flex items-center gap-4">
