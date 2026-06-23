@@ -48,7 +48,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg text-cream/85 mb-10 max-w-lg leading-relaxed"
           >
-            Relational and trauma-informed therapy for individuals navigating life transitions, identity, alcohol and substance use in an affirming, conversational environment. Together, we can create meaningful change.
+            Relational and trauma-informed therapy for individuals navigating life transitions, identity, and alcohol/substance use in an affirming, conversational environment. Together, we can create meaningful change.
           </motion.p>
 
           <motion.div
