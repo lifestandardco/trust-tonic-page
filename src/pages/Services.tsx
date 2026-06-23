@@ -86,7 +86,7 @@ const Services = () => {
                 </div>
                 <h3 className="text-2xl font-display font-medium">Group Therapy</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  I have experience running LGBTQIA+ support, DBT skills, and recovery groups. Please check back for future group offerings.
+                I have run a variety of groups including:  Alcohol and Drug Support Groups, LGBTQIA+ Support Groups, DBT Skills Group and Interpersonal Process groups.
                 </p>
                 <p className="text-lg font-display font-semibold text-primary">90 mins | TBD</p>
               </motion.div>
@@ -107,7 +107,7 @@ const Services = () => {
                 <div>
                   <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-6 font-semibold">In-Network With</h4>
                   <div className="flex flex-wrap gap-3">
-                    {["United", "UMR", "Optum", "Aetna", "Meritain", "Oscar"].map((ins) => (
+                    {["United", "UMR", "Optum & Optum EAP", "Aetna", "Meritain", "Oscar" , "Anthem Blue Cross Blue Shield", "Kaiser via Carelon"].map((ins) => (
                       <span key={ins} className="px-5 py-2.5 bg-background rounded-full border border-border text-sm font-medium shadow-sm">
                         {ins}
                       </span>

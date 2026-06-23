@@ -37,7 +37,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-cream leading-tight mb-6"
           >
-            A safe, conversational space to{" "}
+            A supportive space to{" "}
             <span className="italic">heal, grow,</span>{" "}
             and connect.
           </motion.h1>
@@ -48,7 +48,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg text-cream/85 mb-10 max-w-lg leading-relaxed"
           >
-            Relational and trauma-informed therapy for individuals navigating life transitions, identity, and recovery. Let's create meaningful change together.
+            Relational and trauma-informed therapy for individuals navigating life transitions, identity, alcohol and substance use in an affirming, conversational environment. Together, we can create meaningful change.
           </motion.p>
 
           <motion.div
@@ -64,16 +64,6 @@ const HeroSection = () => {
               className="px-8 py-6"
             >
               Schedule a Free Consultation
-            </Button>
-            <Button
-              variant="hero-outline"
-              size="lg"
-              onClick={() =>
-                document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="px-8 py-6 border-cream/60 text-cream hover:bg-cream/10 hover:text-cream"
-            >
-              My Approach
             </Button>
           </motion.div>
         </div>

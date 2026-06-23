@@ -131,7 +131,7 @@ const ContactSection = () => {
                 />
               </div>
               <Button variant="hero" size="lg" type="submit" className="w-full py-6">
-                Schedule a Free Consultation
+                Send
               </Button>
               <p className="text-xs text-muted-foreground text-center">
                 Your information is completely confidential.
