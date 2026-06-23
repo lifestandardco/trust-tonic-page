@@ -2,6 +2,13 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -9,9 +16,13 @@ import { useToast } from "@/hooks/use-toast";
 const ContactSection = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    firstName: "",
+    lastName: "",
+    pronouns: "",
     phone: "",
+    email: "",
+    insurance: "",
+    voicemail: "",
     message: "",
   });
 
@@ -21,7 +32,16 @@ const ContactSection = () => {
       title: "Message sent!",
       description: "Thank you for reaching out. I'll get back to you within 24 hours.",
     });
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setFormData({
+      firstName: "",
+      lastName: "",
+      pronouns: "",
+      phone: "",
+      email: "",
+      insurance: "",
+      voicemail: "",
+      message: "",
+    });
   };
 
   return (
@@ -101,18 +121,57 @@ const ContactSection = () => {
             transition={{ duration: 0.6 }}
           >
             <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-8 shadow-sm space-y-5">
-              <div>
-                <label className="text-sm font-medium mb-1.5 block">Full Name</label>
-                <Input
-                  placeholder="Your name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                  className="bg-background"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium mb-1.5 block">
+                    First Name <span className="text-primary">*</span>
+                  </label>
+                  <Input
+                    placeholder="First name"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    required
+                    className="bg-background"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium mb-1.5 block">
+                    Last Name <span className="text-primary">*</span>
+                  </label>
+                  <Input
+                    placeholder="Last name"
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    required
+                    className="bg-background"
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium mb-1.5 block">Pronouns</label>
+                  <Input
+                    placeholder="e.g. she/her, they/them"
+                    value={formData.pronouns}
+                    onChange={(e) => setFormData({ ...formData, pronouns: e.target.value })}
+                    className="bg-background"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium mb-1.5 block">Phone</label>
+                  <Input
+                    type="tel"
+                    placeholder="(555) 000-0000"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="bg-background"
+                  />
+                </div>
               </div>
               <div>
-                <label className="text-sm font-medium mb-1.5 block">Email</label>
+                <label className="text-sm font-medium mb-1.5 block">
+                  Email <span className="text-primary">*</span>
+                </label>
                 <Input
                   type="email"
                   placeholder="you@email.com"
@@ -123,14 +182,31 @@ const ContactSection = () => {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium mb-1.5 block">Phone (optional)</label>
+                <label className="text-sm font-medium mb-1.5 block">Insurance Provider</label>
                 <Input
-                  type="tel"
-                  placeholder="(555) 000-0000"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  placeholder="e.g. Aetna, United, Optum"
+                  value={formData.insurance}
+                  onChange={(e) => setFormData({ ...formData, insurance: e.target.value })}
                   className="bg-background"
                 />
+              </div>
+              <div>
+                <label className="text-sm font-medium mb-1.5 block">
+                  May I leave a voicemail?
+                </label>
+                <Select
+                  value={formData.voicemail}
+                  onValueChange={(value) => setFormData({ ...formData, voicemail: value })}
+                >
+                  <SelectTrigger className="bg-background">
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="yes">Yes</SelectItem>
+                    <SelectItem value="no">No</SelectItem>
+                    <SelectItem value="email-preferred">Email preferred</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
                 <label className="text-sm font-medium mb-1.5 block">
