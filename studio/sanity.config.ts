@@ -10,6 +10,7 @@ const SINGLETONS = [
   { id: "faqSection", title: "FAQ" },
   { id: "testimonialsSection", title: "Testimonials" },
   { id: "contactSection", title: "Contact" },
+  { id: "servicesPage", title: "Services Page" },
 ];
 
 const singletonIds = new Set(SINGLETONS.map((s) => s.id));

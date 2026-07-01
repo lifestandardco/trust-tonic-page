@@ -3,10 +3,100 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "@/components/NavBar";
 import FooterSection from "@/components/FooterSection";
 import { Button } from "@/components/ui/button";
-import { Phone, Armchair, Users, ShieldCheck, Receipt, Info } from "lucide-react";
+import { Phone, Armchair, Users, ShieldCheck, Info, type LucideIcon } from "lucide-react";
+import { useSanityContent } from "@/lib/useSanityContent";
+
+const ICONS: Record<string, LucideIcon> = {
+  phone: Phone,
+  armchair: Armchair,
+  users: Users,
+};
+
+type ServiceItem = {
+  icon: string;
+  title: string;
+  description: string;
+  price: string;
+};
+
+type ServicesContent = {
+  eyebrow: string;
+  services: ServiceItem[];
+  insuranceHeading: string;
+  inNetworkHeading: string;
+  inNetwork: string[];
+  billingHeading: string;
+  billingText: string;
+  goodFaithHeading: string;
+  goodFaithText: string;
+  ctaHeading: string;
+  ctaButtonLabel: string;
+};
+
+const FALLBACK: ServicesContent = {
+  eyebrow: "Services & Rates",
+  services: [
+    {
+      icon: "phone",
+      title: "Free Consultation",
+      description:
+        "Finding the right therapist is an important part of counseling. I offer a free 15-20 minute phone consultation to explore your needs and determine if we are the right fit.",
+      price: "15-20 mins | Free",
+    },
+    {
+      icon: "armchair",
+      title: "Individual Therapy",
+      description:
+        "Offered both in-person and virtually. I accept private pay and am an in-network provider for several major insurance plans.",
+      price: "50 mins | $160*",
+    },
+    {
+      icon: "users",
+      title: "Group Therapy",
+      description:
+        "I have run a variety of groups including: Alcohol and Drug Support Groups, LGBTQIA+ Support Groups, DBT Skills Group and Interpersonal Process groups.",
+      price: "90 mins | TBD",
+    },
+  ],
+  insuranceHeading: "Insurance & Billing",
+  inNetworkHeading: "In-Network With",
+  inNetwork: [
+    "United",
+    "UMR",
+    "Optum & Optum EAP",
+    "Aetna",
+    "Meritain",
+    "Oscar",
+    "Anthem Blue Cross Blue Shield",
+    "Kaiser via Carelon",
+  ],
+  billingHeading: "Billing Details",
+  billingText:
+    "Private pay is accepted at a rate of $160 per session. For out-of-network providers, I am happy to provide a superbill for you to submit for potential reimbursement.",
+  goodFaithHeading: "Good Faith Estimate",
+  goodFaithText:
+    'Under the "No Surprises Act," you have the right to receive a "Good Faith Estimate" explaining how much your medical care will cost. This applies to patients who do not have insurance or are not using insurance. For questions or more information, please visit www.cms.gov/nosurprises.',
+  ctaHeading: "Ready to get started?",
+  ctaButtonLabel: "Schedule a consultation",
+};
+
+const QUERY = `*[_type == "servicesPage"][0]{
+  eyebrow,
+  services[]{ icon, title, description, price },
+  insuranceHeading,
+  inNetworkHeading,
+  inNetwork,
+  billingHeading,
+  billingText,
+  goodFaithHeading,
+  goodFaithText,
+  ctaHeading,
+  ctaButtonLabel
+}`;
 
 const Services = () => {
   const navigate = useNavigate();
+  const content = useSanityContent("servicesPage", QUERY, FALLBACK);
 
   const scrollToContact = () => {
     // Navigate home and let Index.tsx smooth-scroll to the contact form
@@ -17,19 +107,19 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-background">
       <NavBar />
-      
+
       <main className="pt-20">
         {/* Header Section - Uses Sage Light like your Services Section */}
         <section className="py-24 bg-sage-light">
           <div className="container mx-auto px-6">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
               <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-4">
-                Services & Rates
+                {content.eyebrow}
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium leading-tight mb-6">
                 Get support for your <span className="italic">mental healthcare</span> needs.
@@ -42,58 +132,26 @@ const Services = () => {
         <section className="py-24">
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-3 gap-16">
-              {/* Free Consultation */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="space-y-5"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-2xl font-display font-medium">Free Consultation</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Finding the right therapist is an important part of counseling. I offer a free 15-20 minute phone consultation to explore your needs and determine if we are the right fit.
-                </p>
-                <p className="text-lg font-display font-semibold text-primary">15-20 mins | Free</p>
-              </motion.div>
-
-              {/* Individual Therapy */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="space-y-5"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Armchair className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-2xl font-display font-medium">Individual Therapy</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Offered both in-person and virtually. I accept private pay and am an in-network provider for several major insurance plans.
-                </p>
-                <p className="text-lg font-display font-semibold text-primary">50 mins | $160*</p>
-              </motion.div>
-
-              {/* Group Therapy */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="space-y-5"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Users className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-2xl font-display font-medium">Group Therapy</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                I have run a variety of groups including:  Alcohol and Drug Support Groups, LGBTQIA+ Support Groups, DBT Skills Group and Interpersonal Process groups.
-                </p>
-                <p className="text-lg font-display font-semibold text-primary">90 mins | TBD</p>
-              </motion.div>
+              {content.services.map((service, i) => {
+                const Icon = ICONS[service.icon] ?? Phone;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="space-y-5"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-display font-medium">{service.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                    <p className="text-lg font-display font-semibold text-primary">{service.price}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -104,26 +162,33 @@ const Services = () => {
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center gap-4 mb-10">
                 <ShieldCheck className="text-primary w-8 h-8" />
-                <h2 className="text-3xl md:text-4xl font-display font-medium">Insurance & Billing</h2>
+                <h2 className="text-3xl md:text-4xl font-display font-medium">
+                  {content.insuranceHeading}
+                </h2>
               </div>
-              
+
               <div className="grid md:grid-cols-2 gap-16 mb-16">
                 <div>
-                  <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-6 font-semibold">In-Network With</h4>
+                  <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-6 font-semibold">
+                    {content.inNetworkHeading}
+                  </h4>
                   <div className="flex flex-wrap gap-3">
-                    {["United", "UMR", "Optum & Optum EAP", "Aetna", "Meritain", "Oscar" , "Anthem Blue Cross Blue Shield", "Kaiser via Carelon"].map((ins) => (
-                      <span key={ins} className="px-5 py-2.5 bg-background rounded-full border border-border text-sm font-medium shadow-sm">
+                    {content.inNetwork.map((ins) => (
+                      <span
+                        key={ins}
+                        className="px-5 py-2.5 bg-background rounded-full border border-border text-sm font-medium shadow-sm"
+                      >
                         {ins}
                       </span>
                     ))}
                   </div>
                 </div>
-                
+
                 <div className="space-y-4">
-                  <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-6 font-semibold">Billing Details</h4>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Private pay is accepted at a rate of $160 per session. For out-of-network providers, I am happy to provide a superbill for you to submit for potential reimbursement.
-                  </p>
+                  <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-6 font-semibold">
+                    {content.billingHeading}
+                  </h4>
+                  <p className="text-muted-foreground leading-relaxed">{content.billingText}</p>
                 </div>
               </div>
 
@@ -132,9 +197,11 @@ const Services = () => {
                 <div className="flex items-start gap-4">
                   <Info className="w-5 h-5 text-primary mt-1 shrink-0" />
                   <div className="space-y-3">
-                    <h5 className="font-display font-medium text-lg text-foreground">Good Faith Estimate</h5>
+                    <h5 className="font-display font-medium text-lg text-foreground">
+                      {content.goodFaithHeading}
+                    </h5>
                     <p className="text-sm text-muted-foreground leading-relaxed italic">
-                      Under the "No Surprises Act," you have the right to receive a "Good Faith Estimate" explaining how much your medical care will cost. This applies to patients who do not have insurance or are not using insurance. For questions or more information, please visit www.cms.gov/nosurprises.
+                      {content.goodFaithText}
                     </p>
                   </div>
                 </div>
@@ -146,9 +213,11 @@ const Services = () => {
         {/* Call to Action */}
         <section className="py-24 text-center">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-display font-medium mb-8">Ready to get started?</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-medium mb-8">
+              {content.ctaHeading}
+            </h2>
             <Button size="lg" className="px-12 py-8 text-lg rounded-full" onClick={scrollToContact}>
-              Schedule a consultation
+              {content.ctaButtonLabel}
             </Button>
           </div>
         </section>
