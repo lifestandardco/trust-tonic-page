@@ -1,25 +1,45 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { useSanityContent } from "@/lib/useSanityContent";
 
-const testimonials = [
-  {
-    quote:
-      "After working alongside Britney for several years I can confidently say she is one of the most skilled and talented clinicians I have ever worked with. She is funny, kind and knowledgeable. Her clients are lucky to have her as their counselor.",
-    name: "Jessie Charbonneau, LPC, LAC",
-  },
-  {
-    quote:
-      "I worked alongside Britney for years and she is incredibly kind, warm, and funny. She is a skilled clinician who provides compassion and support with just the right blend of humor. Highly recommend if you need skillful support in growing toward your goals!",
-    name: "Dr. Jeff Paulez, PhD",
-  },
-  {
-    quote:
-      "Britney is a compassionate, knowledgeable and helpful therapist. She is able to connect through kindness and a sense of humor to form meaningful relationships with her clients. I recommend her for anyone who is ready to create change in a safe environment!",
-    name: "Jesselyn DeFilippo, LPC",
-  },
-];
+type Testimonial = { quote: string; name: string };
+type TestimonialsContent = {
+  eyebrow: string;
+  heading: string;
+  items: Testimonial[];
+};
+
+const FALLBACK: TestimonialsContent = {
+  eyebrow: "Kind Words",
+  heading: "What My Colleagues Say",
+  items: [
+    {
+      quote:
+        "After working alongside Britney for several years I can confidently say she is one of the most skilled and talented clinicians I have ever worked with. She is funny, kind and knowledgeable. Her clients are lucky to have her as their counselor.",
+      name: "Jessie Charbonneau, LPC, LAC",
+    },
+    {
+      quote:
+        "I worked alongside Britney for years and she is incredibly kind, warm, and funny. She is a skilled clinician who provides compassion and support with just the right blend of humor. Highly recommend if you need skillful support in growing toward your goals!",
+      name: "Dr. Jeff Paulez, PhD",
+    },
+    {
+      quote:
+        "Britney is a compassionate, knowledgeable and helpful therapist. She is able to connect through kindness and a sense of humor to form meaningful relationships with her clients. I recommend her for anyone who is ready to create change in a safe environment!",
+      name: "Jesselyn DeFilippo, LPC",
+    },
+  ],
+};
+
+const QUERY = `*[_type == "testimonialsSection"][0]{
+  eyebrow,
+  heading,
+  items[]{ quote, name }
+}`;
 
 const TestimonialsSection = () => {
+  const content = useSanityContent("testimonialsSection", QUERY, FALLBACK);
+
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -31,15 +51,15 @@ const TestimonialsSection = () => {
           className="text-center mb-16"
         >
           <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">
-            Kind Words
+            {content.eyebrow}
           </p>
           <h2 className="text-3xl md:text-4xl font-display font-medium">
-            What My Colleagues Say
+            {content.heading}
           </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {testimonials.map((t, i) => (
+          {content.items.map((t, i) => (
             <motion.div
               key={t.name}
               initial={{ opacity: 0, y: 20 }}

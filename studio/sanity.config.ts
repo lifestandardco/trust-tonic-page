@@ -5,8 +5,11 @@ import { schemaTypes } from "./schemas";
 
 // Each section is a "singleton": exactly one editable document.
 const SINGLETONS = [
-  { id: "contactSection", title: "Contact" },
+  { id: "aboutSection", title: "About" },
   { id: "expertiseSection", title: "Areas of Expertise" },
+  { id: "faqSection", title: "FAQ" },
+  { id: "testimonialsSection", title: "Testimonials" },
+  { id: "contactSection", title: "Contact" },
 ];
 
 const singletonIds = new Set(SINGLETONS.map((s) => s.id));
