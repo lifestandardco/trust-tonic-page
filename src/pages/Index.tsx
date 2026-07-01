@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Seo from "@/components/Seo";
 import NavBar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -30,6 +31,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <Seo
+        title="Britney Worley Counseling | Trauma & Relational Therapy in Fort Collins"
+        description="Relational, trauma-informed therapy for individuals navigating life transitions, identity, and substance use — in Fort Collins and online across Colorado. In-network with Aetna, United, and Optum. Book a free consultation."
+        path="/"
+      />
       <NavBar />
       <HeroSection />
       <AboutSection />

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import Seo from "@/components/Seo";
 import NavBar from "@/components/NavBar";
 import FooterSection from "@/components/FooterSection";
 import { Button } from "@/components/ui/button";
@@ -106,6 +107,11 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo
+        title="Services & Rates | Britney Worley Counseling — Fort Collins Therapist"
+        description="Free consultation, individual therapy, and group therapy in Fort Collins and online across Colorado. In-network with United, Aetna, Optum, Kaiser, and more. See rates, insurance, and billing details."
+        path="/services"
+      />
       <NavBar />
 
       <main className="pt-20">

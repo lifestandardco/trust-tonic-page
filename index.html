@@ -4,24 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Default title; per-page title/description/canonical/OG are set by react-helmet (src/components/Seo.tsx) -->
     <title>Britney Worley Counseling | Relational & Trauma Therapy Fort Collins</title>
-    <meta name="title" content="Britney Worley Counseling | Relational & Trauma Therapy Fort Collins" />
-    <meta name="description" content="Specialized therapy for relationships, identity, and life transitions in Fort Collins and online across Colorado. In-network with Aetna, United, and Optum. Book today." />
     <meta name="author" content="Britney Worley, M.A., LPC, NCC" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.britneyworleycounseling.com/" />
-    <meta property="og:title" content="Britney Worley Counseling | Relational & Trauma Therapy" />
-    <meta property="og:description" content="Compassionate, evidence-based therapy in Fort Collins. Specialized support for LGBTQ+, recovery, and trauma. Book a free consultation today." />
     <meta property="og:image" content="https://www.britneyworleycounseling.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
 
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.britneyworleycounseling.com/" />
-    <meta property="twitter:title" content="Britney Worley Counseling | Relational & Trauma Therapy" />
-    <meta property="twitter:description" content="Compassionate, evidence-based therapy in Fort Collins. Specialized support for LGBTQ+, recovery, and trauma. Book a free consultation today." />
     <meta property="twitter:image" content="https://www.britneyworleycounseling.com/og-image.png" />
 
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
@@ -30,6 +23,47 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Britney Worley Counseling" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
+
+    <!-- Local business structured data (schema.org) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "@id": "https://www.britneyworleycounseling.com/#practice",
+        "name": "Britney Worley Counseling",
+        "description": "Relational and trauma-informed therapy for individuals navigating life transitions, identity, and alcohol/substance use — in Fort Collins and online across Colorado.",
+        "url": "https://www.britneyworleycounseling.com/",
+        "telephone": "+1-970-818-0230",
+        "email": "britney@britneyworley.com",
+        "image": "https://www.britneyworleycounseling.com/og-image.png",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "226 Remington Street, Unit 1",
+          "addressLocality": "Fort Collins",
+          "addressRegion": "CO",
+          "postalCode": "80524",
+          "addressCountry": "US"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Fort Collins" },
+          { "@type": "State", "name": "Colorado" }
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "Britney Worley",
+          "honorificSuffix": "M.A., LPC, NCC",
+          "jobTitle": "Licensed Professional Counselor"
+        },
+        "knowsAbout": [
+          "Trauma therapy",
+          "Relationship and emotional well-being",
+          "LGBTQIA+ affirming therapy",
+          "Alcohol and substance use",
+          "Life transitions and personal growth"
+        ]
+      }
+    </script>
   </head>
 
   <body>
