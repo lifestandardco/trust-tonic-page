@@ -12,9 +12,36 @@ import {
 import { Phone, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useSanityContent } from "@/lib/useSanityContent";
 
 // Formspree form endpoint — public by design, safe to commit.
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xrewbgkn";
+
+const CONTACT_FALLBACK = {
+  eyebrow: "Get in Touch",
+  heading: "Schedule a Free Consultation",
+  description:
+    "Finding the right therapist can feel overwhelming. Reach out to schedule a free 20-minute phone consultation so we can talk through your needs, answer questions, and see if we’re a good fit to work together.",
+  schedulingText:
+    "Reach out to find a time to connect or schedule directly on my calendar by following the link below and selecting “I’m a new client”.",
+  schedulingButtonLabel: "Schedule on my calendar",
+  schedulingUrl: "https://britneyworleycounseling.clientsecure.me",
+  phone: "(970) 818-0230",
+  email: "britney@britneyworley.com",
+  address: "226 Remington Street, Unit 1, Fort Collins, CO 80524",
+};
+
+const CONTACT_QUERY = `*[_type == "contactSection"][0]{
+  eyebrow,
+  heading,
+  description,
+  schedulingText,
+  schedulingButtonLabel,
+  schedulingUrl,
+  phone,
+  email,
+  address
+}`;
 
 const voicemailLabels: Record<string, string> = {
   yes: "Yes",
@@ -35,6 +62,7 @@ const emptyForm = {
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const content = useSanityContent("contactSection", CONTACT_QUERY, CONTACT_FALLBACK);
   const [formData, setFormData] = useState(emptyForm);
   const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -98,29 +126,26 @@ const ContactSection = () => {
             transition={{ duration: 0.6 }}
           >
             <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">
-              Get in Touch
+              {content.eyebrow}
             </p>
             <h2 className="text-3xl md:text-4xl font-display font-medium mb-4">
-              Schedule a Free Consultation
+              {content.heading}
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Finding the right therapist can feel overwhelming. Reach out to schedule
-              a free 20-minute phone consultation so we can talk through your needs,
-              answer questions, and see if we&apos;re a good fit to work together.
+              {content.description}
             </p>
 
             <p className="text-muted-foreground leading-relaxed mb-5">
-              Reach out to find a time to connect or schedule directly on my calendar
-              by following the link below and selecting &ldquo;I&apos;m a new client&rdquo;.
+              {content.schedulingText}
             </p>
 
             <Button variant="hero" size="lg" asChild className="mb-10">
               <a
-                href="https://britneyworleycounseling.clientsecure.me"
+                href={content.schedulingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Schedule on my calendar
+                {content.schedulingButtonLabel}
               </a>
             </Button>
 
@@ -131,7 +156,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Phone</p>
-                  <p className="font-medium">(970) 818-0230</p>
+                  <p className="font-medium">{content.phone}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -140,7 +165,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="font-medium">britney@britneyworley.com</p>
+                  <p className="font-medium">{content.email}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -149,9 +174,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Office</p>
-                  <p className="font-medium">
-                    226 Remington Street, Unit 1, Fort Collins, CO 80524
-                  </p>
+                  <p className="font-medium">{content.address}</p>
                 </div>
               </div>
             </div>

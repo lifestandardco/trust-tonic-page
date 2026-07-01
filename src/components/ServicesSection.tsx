@@ -1,58 +1,90 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Heart, Sparkles, Shield, Fingerprint, Plus, X } from "lucide-react";
+import { Heart, Sparkles, Shield, Fingerprint, Plus, X, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useSanityContent } from "@/lib/useSanityContent";
 
-const services = [
-  {
-    icon: Heart,
-    title: "Trauma, Relationship & Emotional Well-being",
-    description:
-      "Navigate patterns in relationships, strengthen boundaries, and process experiences of trauma and emotional reactivity for healthier connections.",
-    details: [
-      "Past trauma showing up in current emotions and relationships",
-      "Angry outbursts and emotional reactivity that feels overwhelming",
-      "Difficulty asserting needs or saying no",
-      "Feeling stuck in repeated relationship cycles",
-    ],
-  },
-  {
-    icon: Sparkles,
-    title: "Life Transitions & Personal Growth",
-    description:
-      "Specialized support for college students and young adults navigating independence, career changes, and self-discovery.",
-    details: [
-      "Feeling overwhelmed or experiencing self-doubt during life transitions",
-      "Struggling with decision-making or adjusting to independence",
-      "Navigating college, grad school, early career stress, or career exploration",
-      "Questioning your direction, identity, or next steps",
-    ],
-  },
-  {
-    icon: Shield,
-    title: "Alcohol & Substance Use",
-    description:
-      "Explore your relationship with alcohol and substances through a harm-reduction lens, aligning choices with your goals and values.",
-    details: [
-      "Wanting to cut back, take breaks, or explore moderation",
-      "Noticing substance use tied to stress, anxiety, emotions, or life transitions",
-      "Exploring sobriety with support that meets you where you are",
-    ],
-  },
-  {
-    icon: Fingerprint,
-    title: "Identity & Marginalization",
-    description:
-      "A safe space to explore LGBTQIAA+ identities and the impacts of systemic oppression related to race, gender, and ability.",
-    details: [
-      "Processing identity-based stress, discrimination, or feeling misunderstood",
-      "Coming out, being out, or navigating disclosure with friends and family",
-      "Exploring family of origin, cultural norms, and identity as a whole",
-    ],
-  },
-];
+const ICONS: Record<string, LucideIcon> = {
+  heart: Heart,
+  sparkles: Sparkles,
+  shield: Shield,
+  fingerprint: Fingerprint,
+};
+
+type ExpertiseCard = {
+  title: string;
+  description: string;
+  icon: string;
+  experiences: string[];
+};
+
+type ExpertiseContent = {
+  eyebrow: string;
+  heading: string;
+  cards: ExpertiseCard[];
+};
+
+const FALLBACK: ExpertiseContent = {
+  eyebrow: "How I Can Help",
+  heading: "Areas of Expertise",
+  cards: [
+    {
+      icon: "heart",
+      title: "Trauma, Relationship & Emotional Well-being",
+      description:
+        "Navigate patterns in relationships, strengthen boundaries, and process experiences of trauma and emotional reactivity for healthier connections.",
+      experiences: [
+        "Past trauma showing up in current emotions and relationships",
+        "Angry outbursts and emotional reactivity that feels overwhelming",
+        "Difficulty asserting needs or saying no",
+        "Feeling stuck in repeated relationship cycles",
+      ],
+    },
+    {
+      icon: "sparkles",
+      title: "Life Transitions & Personal Growth",
+      description:
+        "Specialized support for college students and young adults navigating independence, career changes, and self-discovery.",
+      experiences: [
+        "Feeling overwhelmed or experiencing self-doubt during life transitions",
+        "Struggling with decision-making or adjusting to independence",
+        "Navigating college, grad school, early career stress, or career exploration",
+        "Questioning your direction, identity, or next steps",
+      ],
+    },
+    {
+      icon: "shield",
+      title: "Alcohol & Substance Use",
+      description:
+        "Explore your relationship with alcohol and substances through a harm-reduction lens, aligning choices with your goals and values.",
+      experiences: [
+        "Wanting to cut back, take breaks, or explore moderation",
+        "Noticing substance use tied to stress, anxiety, emotions, or life transitions",
+        "Exploring sobriety with support that meets you where you are",
+      ],
+    },
+    {
+      icon: "fingerprint",
+      title: "Identity & Marginalization",
+      description:
+        "A safe space to explore LGBTQIAA+ identities and the impacts of systemic oppression related to race, gender, and ability.",
+      experiences: [
+        "Processing identity-based stress, discrimination, or feeling misunderstood",
+        "Coming out, being out, or navigating disclosure with friends and family",
+        "Exploring family of origin, cultural norms, and identity as a whole",
+      ],
+    },
+  ],
+};
+
+const QUERY = `*[_type == "expertiseSection"][0]{
+  eyebrow,
+  heading,
+  cards[]{ title, description, icon, experiences }
+}`;
 
 const ServicesSection = () => {
+  const content = useSanityContent("expertiseSection", QUERY, FALLBACK);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -66,17 +98,19 @@ const ServicesSection = () => {
           className="text-center mb-16"
         >
           <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">
-            How I Can Help
+            {content.eyebrow}
           </p>
           <h2 className="text-3xl md:text-4xl font-display font-medium mb-4">
-            Areas of Expertise
+            {content.heading}
           </h2>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, i) => {
+          {content.cards.map((service, i) => {
             const isOpen = openIndex === i;
             const detailId = `service-detail-${i}`;
+            const Icon = ICONS[service.icon] ?? Heart;
+            const experiences = service.experiences ?? [];
 
             return (
               <motion.div
@@ -90,7 +124,7 @@ const ServicesSection = () => {
                 {/* Front face */}
                 <div className="flex h-full flex-col p-8">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                    <service.icon className="w-6 h-6 text-primary" />
+                    <Icon className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="text-lg font-display font-semibold mb-3">
                     {service.title}
@@ -122,12 +156,12 @@ const ServicesSection = () => {
                     "absolute inset-0 flex flex-col rounded-2xl bg-card p-8 shadow-md ring-1 ring-primary/10",
                     "opacity-0 translate-y-2 pointer-events-none transition-all duration-300 ease-out",
                     "motion-reduce:transition-none motion-reduce:translate-y-0",
-                    isOpen && "opacity-100 translate-y-0 pointer-events-auto"
+                    isOpen && "opacity-100 translate-y-0 pointer-events-auto",
                   )}
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-9 h-9 shrink-0 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <service.icon className="w-5 h-5 text-primary" />
+                      <Icon className="w-5 h-5 text-primary" />
                     </div>
                     <h3 className="text-base font-display font-semibold leading-tight">
                       {service.title}
@@ -145,7 +179,7 @@ const ServicesSection = () => {
                     Common experiences
                   </p>
                   <ul className="space-y-2 text-sm text-foreground/80 leading-snug overflow-y-auto">
-                    {service.details.map((item) => (
+                    {experiences.map((item) => (
                       <li key={item} className="flex gap-2.5">
                         <span
                           className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary"
