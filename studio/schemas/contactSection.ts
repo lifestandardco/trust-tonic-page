@@ -5,7 +5,6 @@ export default defineType({
   title: "Contact",
   type: "document",
   fields: [
-    defineField({ name: "eyebrow", title: "Eyebrow (small label above heading)", type: "string" }),
     defineField({ name: "heading", title: "Heading", type: "string" }),
     defineField({ name: "description", title: "Description paragraph", type: "text", rows: 4 }),
     defineField({

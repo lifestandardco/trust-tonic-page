@@ -18,8 +18,7 @@ import { useSanityContent } from "@/lib/useSanityContent";
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xrewbgkn";
 
 const CONTACT_FALLBACK = {
-  eyebrow: "Get in Touch",
-  heading: "Schedule a Free Consultation",
+  heading: "Get in Touch",
   description:
     "Finding the right therapist can feel overwhelming. Reach out to schedule a free 20-minute phone consultation so we can talk through your needs, answer questions, and see if we’re a good fit to work together.",
   schedulingText:
@@ -32,7 +31,6 @@ const CONTACT_FALLBACK = {
 };
 
 const CONTACT_QUERY = `*[_type == "contactSection"][0]{
-  eyebrow,
   heading,
   description,
   schedulingText,
@@ -125,9 +123,6 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">
-              {content.eyebrow}
-            </p>
             <h2 className="text-3xl md:text-4xl font-display font-medium mb-4">
               {content.heading}
             </h2>
@@ -186,6 +181,7 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            <h3 className="text-2xl font-display font-medium mb-5">Contact Form</h3>
             <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-8 shadow-sm space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
