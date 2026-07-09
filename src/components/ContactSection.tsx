@@ -152,7 +152,7 @@ const ContactSection = () => {
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Phone className="w-4 h-4 text-primary" />
+                  <Phone className="w-4 h-4 text-primary" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Phone</p>
@@ -161,7 +161,7 @@ const ContactSection = () => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Mail className="w-4 h-4 text-primary" />
+                  <Mail className="w-4 h-4 text-primary" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
@@ -170,7 +170,7 @@ const ContactSection = () => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <MapPin className="w-4 h-4 text-primary" />
+                  <MapPin className="w-4 h-4 text-primary" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Office</p>

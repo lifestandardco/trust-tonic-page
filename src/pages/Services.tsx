@@ -150,7 +150,7 @@ const Services = () => {
                     className="space-y-5"
                   >
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-primary" />
+                      <Icon className="w-6 h-6 text-primary" aria-hidden="true" />
                     </div>
                     <h3 className="text-2xl font-display font-medium">{service.title}</h3>
                     <p className="text-muted-foreground leading-relaxed">{service.description}</p>
@@ -167,7 +167,7 @@ const Services = () => {
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center gap-4 mb-10">
-                <ShieldCheck className="text-primary w-8 h-8" />
+                <ShieldCheck className="text-primary w-8 h-8" aria-hidden="true" />
                 <h2 className="text-3xl md:text-4xl font-display font-medium">
                   {content.insuranceHeading}
                 </h2>
@@ -201,7 +201,7 @@ const Services = () => {
               {/* Good Faith Estimate - Standardized with your UI components */}
               <div className="p-10 border border-border rounded-3xl bg-background/60 shadow-sm">
                 <div className="flex items-start gap-4">
-                  <Info className="w-5 h-5 text-primary mt-1 shrink-0" />
+                  <Info className="w-5 h-5 text-primary mt-1 shrink-0" aria-hidden="true" />
                   <div className="space-y-3">
                     <h5 className="font-display font-medium text-lg text-foreground">
                       {content.goodFaithHeading}

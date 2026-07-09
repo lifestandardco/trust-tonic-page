@@ -124,7 +124,7 @@ const ServicesSection = () => {
                 {/* Front face */}
                 <div className="flex h-full flex-col p-8">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                    <Icon className="w-6 h-6 text-primary" />
+                    <Icon className="w-6 h-6 text-primary" aria-hidden="true" />
                   </div>
                   <h3 className="text-lg font-display font-semibold mb-3">
                     {service.title}
@@ -161,7 +161,7 @@ const ServicesSection = () => {
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-9 h-9 shrink-0 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-primary" />
+                      <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
                     </div>
                     <h3 className="text-base font-display font-semibold leading-tight">
                       {service.title}

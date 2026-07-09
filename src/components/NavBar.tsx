@@ -92,8 +92,13 @@ const NavBar = () => {
         </div>
 
         {/* Mobile toggle */}
-        <button className="md:hidden ml-4" onClick={() => setOpen(!open)}>
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        <button
+          className="md:hidden ml-4"
+          onClick={() => setOpen(!open)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+        >
+          {open ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
         </button>
       </div>
 

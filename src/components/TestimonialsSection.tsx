@@ -68,9 +68,9 @@ const TestimonialsSection = () => {
               transition={{ duration: 0.5, delay: i * 0.12 }}
               className="bg-card rounded-2xl p-8 shadow-sm border border-border"
             >
-              <div className="flex gap-1 mb-4">
+              <div className="flex gap-1 mb-4" role="img" aria-label="5 out of 5 stars">
                 {[...Array(5)].map((_, j) => (
-                  <Star key={j} className="w-4 h-4 fill-terracotta text-terracotta" />
+                  <Star key={j} className="w-4 h-4 fill-terracotta text-terracotta" aria-hidden="true" />
                 ))}
               </div>
               <p className="text-foreground/85 leading-relaxed mb-6 italic">
